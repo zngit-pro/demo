@@ -1,0 +1,22 @@
+ext {
+    group 'org.foryou'
+    version '1.0'
+}
+
+allprojects{
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects{
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    ext {
+        springBootVersion = '2.0.0.RELEASE'
+    }
+
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+}
