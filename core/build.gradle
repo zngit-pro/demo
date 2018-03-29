@@ -1,3 +1,19 @@
 dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '2.4'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: "${springBootVersion}"
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis', version: "${springBootVersion}"
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: "${springBootVersion}"
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: "${springBootVersion}"
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: "${springBootVersion}"
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: "${springBootVersion}"
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: "${springBootVersion}"
+
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
 }
