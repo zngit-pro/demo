@@ -16,4 +16,11 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: "${springBootVersion}"
 
     compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+
+    compile group: 'org.redisson', name: 'redisson', version: '3.6.3'
+
+    compile group: 'commons-net', name: 'commons-net', version: '3.6'
+
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
+
 }
