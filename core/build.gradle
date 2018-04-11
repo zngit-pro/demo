@@ -15,9 +15,15 @@ dependencies {
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: "${springBootVersion}"
 
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: "${springBootVersion}"
+
     compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
 
     compile group: 'org.redisson', name: 'redisson', version: '3.6.3'
+
+    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+
+    compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.5.0'
 
     compile group: 'commons-net', name: 'commons-net', version: '3.6'
 
