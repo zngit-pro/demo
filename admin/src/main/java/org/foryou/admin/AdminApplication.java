@@ -13,7 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @SpringBootApplication
 @EnableJpaRepositories("org.foryou.jpa")
 @EntityScan("org.foryou.dao")
-@PropertySource(value = {"file:/application.properties"})
+@PropertySource(value = {"file:/etc/demo/admin/application.properties"})
 public class AdminApplication {
 
     public static void main(String[] args) {
