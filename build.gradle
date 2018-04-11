@@ -12,6 +12,8 @@ allprojects{
 subprojects{
     apply plugin: 'java'
     sourceCompatibility = 1.8
+    //打包使用utf-8编码
+    compileJava.options.encoding = "UTF-8"
     ext {
         springBootVersion = '2.0.0.RELEASE'
     }
