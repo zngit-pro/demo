@@ -22,4 +22,10 @@ public class AdminUserServiceImpl implements AdminUserService {
         List<AdminUserEntity> userEntities = userJpa.findAll();
         return userMapper.getUserVos(userEntities);
     }
+
+    @Override
+    public UserVo add(UserVo userVo) {
+        AdminUserEntity adminUserEntity = userJpa.save(userMapper.getAdminUserEntity(userVo));
+        return userMapper.getUserVo(adminUserEntity);
+    }
 }

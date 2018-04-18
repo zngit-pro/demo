@@ -1,22 +1,25 @@
 package org.foryou.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.DynamicInsert;
+
+import javax.persistence.*;
 import java.util.Date;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "admin_user", schema = "demo")
+@DynamicInsert
 public class AdminUserEntity {
     private Integer id;
     private String account;
     private String name;
-    private Boolean enable;
+    private int enable;
     private Date createTime;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -44,11 +47,11 @@ public class AdminUserEntity {
     }
 
     @Column(name = "enable")
-    public Boolean getEnable() {
+    public int getEnable() {
         return enable;
     }
 
-    public void setEnable(Boolean enable) {
+    public void setEnable(int enable) {
         this.enable = enable;
     }
 

@@ -1,6 +1,7 @@
 package org.foryou.admin.controller;
 
 import org.foryou.admin.service.AdminUserService;
+import org.foryou.admin.vo.ResponseVo;
 import org.foryou.admin.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,11 @@ public class AdminUserController {
 
     @RequestMapping("list")
     public List<UserVo> list() {
-        return userService.list().subList(0,1);
+        return userService.list();
+    }
+
+    @RequestMapping("add")
+    public ResponseVo<?> add(UserVo userVo) {
+        return new ResponseVo<>(ResponseVo.CodeType.SUCCESS, userService.add(userVo));
     }
 }

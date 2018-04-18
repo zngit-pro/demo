@@ -4,6 +4,7 @@ public class UserVo {
     private Integer id;
     private String account;
     private String name;
+    private boolean enable;
 
     public Integer getId() {
         return id;
@@ -27,5 +28,13 @@ public class UserVo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isEnable() {
+        return enable;
+    }
+
+    public void setEnable(boolean enable) {
+        this.enable = enable;
     }
 }
