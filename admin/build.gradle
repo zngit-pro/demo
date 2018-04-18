@@ -1,9 +1,9 @@
 apply plugin: 'war'
 
-
-
 dependencies {
     compile project(":core")
+    compile 'org.mapstruct:mapstruct-jdk8:1.1.0.Final'
+    apt 'org.mapstruct:mapstruct-processor:1.1.0.Final'
     compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}")
     testCompile("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
