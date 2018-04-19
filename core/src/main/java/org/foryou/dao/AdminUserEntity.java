@@ -1,25 +1,33 @@
 package org.foryou.dao;
 
-import org.hibernate.annotations.DynamicInsert;
-
-import javax.persistence.*;
-import java.util.Date;
-
 import static javax.persistence.GenerationType.IDENTITY;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Immutable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "admin_user", schema = "demo")
 @DynamicInsert
+@DynamicUpdate
 public class AdminUserEntity {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
     private Integer id;
     private String account;
     private String name;
-    private int enable;
+    private Integer enable;
+    @Column(name = "create_time")
     private Date createTime;
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = IDENTITY)
+
     public Integer getId() {
         return id;
     }
@@ -28,7 +36,6 @@ public class AdminUserEntity {
         this.id = id;
     }
 
-    @Column(name = "account")
     public String getAccount() {
         return account;
     }
@@ -37,7 +44,6 @@ public class AdminUserEntity {
         this.account = account;
     }
 
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -46,16 +52,15 @@ public class AdminUserEntity {
         this.name = name;
     }
 
-    @Column(name = "enable")
-    public int getEnable() {
+    public Integer getEnable() {
         return enable;
     }
 
-    public void setEnable(int enable) {
+    public void setEnable(Integer enable) {
         this.enable = enable;
     }
 
-    @Column(name = "create_time")
+
     public Date getCreateTime() {
         return createTime;
     }

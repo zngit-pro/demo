@@ -1,10 +1,15 @@
 package org.foryou.admin.vo;
 
-public class UserVo {
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import java.io.Serializable;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UserVo implements Serializable{
     private Integer id;
     private String account;
     private String name;
-    private boolean enable;
+    private Boolean enable;
     private String createTime;
 
     public Integer getId() {
@@ -31,11 +36,11 @@ public class UserVo {
         this.name = name;
     }
 
-    public boolean isEnable() {
+    public Boolean isEnable() {
         return enable;
     }
 
-    public void setEnable(boolean enable) {
+    public void setEnable(Boolean enable) {
         this.enable = enable;
     }
 

@@ -1,5 +1,8 @@
 package org.foryou.admin.vo;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseVo<T> {
     private int code;
     private String message;
@@ -13,6 +16,7 @@ public class ResponseVo<T> {
 
     public ResponseVo(CodeType codeType, T data) {
         this.code = codeType.getCode();
+        this.setMessage("success");
         this.data = data;
     }
 
@@ -40,9 +44,10 @@ public class ResponseVo<T> {
         this.data = data;
     }
 
-    public static enum CodeType {
+    public enum CodeType {
         SUCCESS(0),
-        FAIL(1);
+        SYSTEM_ERROR(1),
+        FAIL(2);
 
         private int code;
 

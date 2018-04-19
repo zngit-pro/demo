@@ -1,5 +1,6 @@
 package org.foryou.admin.controller;
 
+import org.foryou.admin.exception.UserException;
 import org.foryou.admin.service.AdminUserService;
 import org.foryou.admin.vo.ResponseVo;
 import org.foryou.admin.vo.UserVo;
@@ -22,7 +23,7 @@ public class AdminUserController {
     }
 
     @RequestMapping("add")
-    public ResponseVo<?> add(UserVo userVo) {
+    public ResponseVo<?> add(UserVo userVo) throws UserException {
         return new ResponseVo<>(ResponseVo.CodeType.SUCCESS, userService.add(userVo));
     }
 }

@@ -1,5 +1,6 @@
 package org.foryou.admin.service.impl;
 
+import org.foryou.admin.exception.UserException;
 import org.foryou.admin.mapper.UserMapper;
 import org.foryou.admin.service.AdminUserService;
 import org.foryou.admin.vo.UserVo;
@@ -24,8 +25,12 @@ public class AdminUserServiceImpl implements AdminUserService {
     }
 
     @Override
-    public UserVo add(UserVo userVo) {
-        AdminUserEntity adminUserEntity = userJpa.save(userMapper.getAdminUserEntity(userVo));
-        return userMapper.getUserVo(adminUserEntity);
+    public UserVo add(UserVo userVo) throws UserException {
+        AdminUserEntity userEntity = userJpa.findByAccount(userVo.getAccount());
+        if (userEntity == null) {
+            userEntity = userJpa.save(userMapper.getAdminUserEntity(userVo));
+            return userMapper.getUserVo(userEntity);
+        }
+        throw new UserException("添加用户失败,已存在用户:" + userVo.getAccount());
     }
 }

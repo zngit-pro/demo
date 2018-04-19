@@ -1,12 +1,14 @@
 package org.foryou.jpa;
 
 import org.foryou.dao.AdminUserEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface AdminUserJpa extends JpaRepository<AdminUserEntity, Integer> {
+public interface AdminUserJpa extends CustomRepository<AdminUserEntity, Integer> {
+
     List<AdminUserEntity> findAll();
 
     AdminUserEntity save(AdminUserEntity adminUserEntity);
+
+    AdminUserEntity findByAccount(String account);
 }

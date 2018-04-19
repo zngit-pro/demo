@@ -4,11 +4,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BooleanMapper {
-    public boolean toBoolean(int enable) {
+    public Boolean toBoolean(Integer enable) {
+        if (enable == null) {
+            return null;
+        }
         return enable == 1;
     }
 
-    public int toInt(boolean enable) {
+    public Integer toInt(Boolean enable) {
+        if (enable == null) {
+            return null;
+        }
         return enable ? 1 : 0;
     }
 }
