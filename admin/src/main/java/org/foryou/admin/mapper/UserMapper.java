@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = BooleanMapper.class)
+@Mapper(componentModel = "spring", uses = {BooleanMapper.class, DateMapper.class})
 public interface UserMapper {
 
     UserVo getUserVo(AdminUserEntity userEntity);

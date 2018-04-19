@@ -5,6 +5,7 @@ public class UserVo {
     private String account;
     private String name;
     private boolean enable;
+    private String createTime;
 
     public Integer getId() {
         return id;
@@ -36,5 +37,13 @@ public class UserVo {
 
     public void setEnable(boolean enable) {
         this.enable = enable;
+    }
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 }
