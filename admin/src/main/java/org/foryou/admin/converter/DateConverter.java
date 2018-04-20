@@ -1,4 +1,4 @@
-package org.foryou.admin.mapper;
+package org.foryou.admin.converter;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 @Component
-public class DateMapper {
+public class DateConverter {
     private final String pattern = "yyyy-MM-dd HH:mm:ss";
 
     public Date toDate(String dateStr) throws ParseException {

@@ -1,6 +1,7 @@
 package org.foryou.admin;
 
-import org.foryou.jpa.CustomRepositoryImpl;
+import org.foryou.admin.jpa.CustomRepositoryImpl;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -12,8 +13,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @SpringBootApplication
-@EnableJpaRepositories(value = "org.foryou.jpa", repositoryBaseClass = CustomRepositoryImpl.class)
+@EnableJpaRepositories(value = "org.foryou.admin.jpa", repositoryBaseClass = CustomRepositoryImpl.class)
 @EntityScan("org.foryou.dao")
+@MapperScan("org.foryou.admin.mybatis")
 @PropertySource(value = {"file:/etc/demo/admin/application.properties"})
 public class AdminApplication {
 

@@ -1,9 +1,9 @@
-package org.foryou.admin.mapper;
+package org.foryou.admin.converter;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class BooleanMapper {
+public class BooleanConverter {
     public Boolean toBoolean(Integer enable) {
         if (enable == null) {
             return null;

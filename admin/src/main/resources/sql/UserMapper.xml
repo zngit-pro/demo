@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.foryou.admin.mybatis.UserMapper">
+
+
+    <insert id="insertAll">
+        INSERT INTO admin_user(account,name) VALUES
+        <foreach collection="users" separator="," item="user">
+            (#{user.account},#{user.name})
+        </foreach>
+    </insert>
+
+    <select id="list" resultType="org.foryou.dao.AdminUserEntity">
+        SELECT a.*from admin_user a join (
+          SELECT id from admin_user ORDER BY id limit #{page},#{size}
+        )b  where a.id=b.id
+    </select>
+</mapper>
