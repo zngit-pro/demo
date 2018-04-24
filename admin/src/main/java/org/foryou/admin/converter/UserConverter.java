@@ -1,7 +1,7 @@
 package org.foryou.admin.converter;
 
 import org.foryou.admin.vo.UserVo;
-import org.foryou.dao.AdminUserEntity;
+import org.foryou.dao.ApiUserEntity;
 import org.foryou.dao.Page;
 import org.mapstruct.Mapper;
 
@@ -10,13 +10,13 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {BooleanConverter.class, DateConverter.class})
 public interface UserConverter {
 
-    UserVo getUserVo(AdminUserEntity userEntity);
+    UserVo getUserVo(ApiUserEntity apiUserEntity);
 
-    AdminUserEntity getAdminUserEntity(UserVo userVo);
+    ApiUserEntity getUserEntity(UserVo userVo);
 
-    List<UserVo> getUserVos(List<AdminUserEntity> userEntities);
+    List<UserVo> getUserVos(List<ApiUserEntity> userEntities);
 
-    Page<UserVo> getUserVos(Page<AdminUserEntity> userEntities);
+    Page<UserVo> getUserVos(Page<ApiUserEntity> userEntities);
 
-    List<AdminUserEntity> getAdminUserEntitys(List<UserVo> userEntities);
+    List<ApiUserEntity> getUserEntitys(List<UserVo> userEntities);
 }

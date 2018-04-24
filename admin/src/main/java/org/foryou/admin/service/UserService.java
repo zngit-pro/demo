@@ -8,7 +8,7 @@ import org.foryou.dao.QueryDate;
 
 import java.util.List;
 
-public interface AdminUserService {
+public interface UserService {
     Page<UserVo> list(Pageable pageable, QueryDate queryDate);
 
     UserVo add(UserVo userVo) throws UserException;

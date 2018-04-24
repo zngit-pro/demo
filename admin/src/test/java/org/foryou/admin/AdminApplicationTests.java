@@ -58,7 +58,7 @@ public class AdminApplicationTests {
                     users.add(userVo);
                 }
                 try {
-                    userMapper.insertAll(mapStructMapper.getAdminUserEntitys(users));
+                    userMapper.insertAll(mapStructMapper.getUserEntitys(users));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

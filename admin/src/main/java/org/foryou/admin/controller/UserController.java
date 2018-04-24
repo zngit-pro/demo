@@ -1,10 +1,9 @@
 package org.foryou.admin.controller;
 
 import org.foryou.admin.exception.UserException;
-import org.foryou.admin.service.AdminUserService;
+import org.foryou.admin.service.UserService;
 import org.foryou.admin.vo.ResponseVo;
 import org.foryou.admin.vo.UserVo;
-import org.foryou.dao.Page;
 import org.foryou.dao.Pageable;
 import org.foryou.dao.QueryDate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("user")
-public class AdminUserController {
+public class UserController {
 
     @Autowired
-    private AdminUserService userService;
+    private UserService userService;
 
     @RequestMapping("list")
-    public Page<UserVo> list(Pageable pageable, QueryDate queryDate) {
-        Page<UserVo> userVos = userService.list(pageable, queryDate);
-        return userVos;
+    public ResponseVo<?> list(Pageable pageable, QueryDate queryDate) {
+        return new ResponseVo<>(ResponseVo.CodeType.SUCCESS, userService.list(pageable, queryDate));
     }
 
     @RequestMapping("add")

@@ -13,10 +13,10 @@ import javax.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "admin_user", schema = "demo")
+@Table(name = "api_user", schema = "demo")
 @DynamicInsert
 @DynamicUpdate
-public class AdminUserEntity {
+public class ApiUserEntity {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

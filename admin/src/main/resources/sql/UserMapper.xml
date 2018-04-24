@@ -4,7 +4,7 @@
 
 
     <insert id="insertAll">
-        INSERT INTO admin_user(account,`name`,create_time) VALUES
+        INSERT INTO api_user(account,`name`,create_time) VALUES
         <foreach collection="users" separator="," item="user">
             (#{user.account},#{user.name},#{user.createTime})
         </foreach>
@@ -15,14 +15,14 @@
     </sql>
 
     <select id="count" resultType="int">
-        SELECT count(id) from admin_user
+        SELECT count(id) from api_user
         WHERE 1=1
         <include refid="queryDate"/>
     </select>
 
-    <select id="list" resultType="org.foryou.dao.AdminUserEntity">
-        SELECT a.* ,a.create_time as createTime from admin_user a join (
-        SELECT id from admin_user
+    <select id="list" resultType="org.foryou.dao.ApiUserEntity">
+        SELECT a.* ,a.create_time as createTime from api_user a join (
+        SELECT id from api_user
         WHERE 1=1
         <include refid="queryDate"/>
         ORDER BY id limit #{pageable.limitStart},#{pageable.size}
