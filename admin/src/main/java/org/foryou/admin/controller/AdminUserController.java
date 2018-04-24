@@ -1,10 +1,12 @@
 package org.foryou.admin.controller;
 
-import com.github.pagehelper.PageInfo;
 import org.foryou.admin.exception.UserException;
 import org.foryou.admin.service.AdminUserService;
 import org.foryou.admin.vo.ResponseVo;
 import org.foryou.admin.vo.UserVo;
+import org.foryou.dao.Page;
+import org.foryou.dao.Pageable;
+import org.foryou.dao.QueryDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +19,8 @@ public class AdminUserController {
     private AdminUserService userService;
 
     @RequestMapping("list")
-    public PageInfo<UserVo> list(int page) {
-        PageInfo<UserVo> userVos = userService.list(page);
+    public Page<UserVo> list(Pageable pageable, QueryDate queryDate) {
+        Page<UserVo> userVos = userService.list(pageable, queryDate);
         return userVos;
     }
 

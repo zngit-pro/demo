@@ -1,7 +1,5 @@
 package org.foryou.admin.service.impl;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.foryou.admin.converter.UserConverter;
 import org.foryou.admin.exception.UserException;
 import org.foryou.admin.jpa.AdminUserJpa;
@@ -9,6 +7,9 @@ import org.foryou.admin.mybatis.UserMapper;
 import org.foryou.admin.service.AdminUserService;
 import org.foryou.admin.vo.UserVo;
 import org.foryou.dao.AdminUserEntity;
+import org.foryou.dao.Page;
+import org.foryou.dao.Pageable;
+import org.foryou.dao.QueryDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,11 @@ public class AdminUserServiceImpl implements AdminUserService {
     private UserConverter userConverter;
     @Autowired
     private UserMapper userMapper;
-    private int size = 10;
 
     @Override
-    public PageInfo<UserVo> list(int page) {
-        PageHelper.startPage(page, size);
-        PageInfo<AdminUserEntity> pageInfo =new PageInfo<>(userMapper.list(page));
-        return userConverter.getUserVos(pageInfo);
+    public Page<UserVo> list(Pageable pageable, QueryDate queryDate) {
+        Page<AdminUserEntity> pageinfo = new Page<>(pageable, userMapper.count(queryDate), userMapper.list(pageable, queryDate));
+        return userConverter.getUserVos(pageinfo);
     }
 
     @Override

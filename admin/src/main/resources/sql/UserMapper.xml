@@ -4,15 +4,28 @@
 
 
     <insert id="insertAll">
-        INSERT INTO admin_user(account,name) VALUES
+        INSERT INTO admin_user(account,`name`,create_time) VALUES
         <foreach collection="users" separator="," item="user">
-            (#{user.account},#{user.name})
+            (#{user.account},#{user.name},#{user.createTime})
         </foreach>
     </insert>
 
+    <sql id="queryDate">
+        and create_time BETWEEN #{queryDate.start,jdbcType=DATE} AND #{queryDate.end,jdbcType=DATE}
+    </sql>
+
+    <select id="count" resultType="int">
+        SELECT count(id) from admin_user
+        WHERE 1=1
+        <include refid="queryDate"/>
+    </select>
+
     <select id="list" resultType="org.foryou.dao.AdminUserEntity">
-        SELECT a.*from admin_user a join (
-          SELECT id from admin_user ORDER BY id limit #{page},#{size}
-        )b  where a.id=b.id
+        SELECT a.* ,a.create_time as createTime from admin_user a join (
+        SELECT id from admin_user
+        WHERE 1=1
+        <include refid="queryDate"/>
+        ORDER BY id limit #{pageable.limitStart},#{pageable.size}
+        )b where a.id=b.id
     </select>
 </mapper>
