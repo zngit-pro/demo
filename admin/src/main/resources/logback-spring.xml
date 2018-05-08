@@ -22,6 +22,11 @@
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
     </root>
+
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter" level="debug" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+
     <springProfile name="dev">
         <logger name="org.foryou.admin.mybatis" level="debug" additivity="false">
             <appender-ref ref="console"/>
