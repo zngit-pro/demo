@@ -6,11 +6,12 @@ import org.foryou.admin.jpa.UserRepository;
 import org.foryou.admin.mybatis.UserMapper;
 import org.foryou.admin.service.UserService;
 import org.foryou.admin.vo.UserVo;
+import org.foryou.dao.ApiUserEntity;
 import org.foryou.dao.Page;
 import org.foryou.dao.Pageable;
 import org.foryou.dao.QueryDate;
-import org.foryou.dao.ApiUserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Cacheable(key = "#queryDate.cacheKey.concat(#pageable.page)", value = "exp10s")
     @Override
     public Page<UserVo> list(Pageable pageable, QueryDate queryDate) {
         Page<ApiUserEntity> pageinfo = new Page<>(pageable, userMapper.count(queryDate), userMapper.list(pageable, queryDate));

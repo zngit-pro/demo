@@ -47,7 +47,8 @@ public class ResponseVo<T> {
     public enum CodeType {
         SUCCESS(0),
         SYSTEM_ERROR(1),
-        FAIL(2);
+        PARAM_ERROR(3),
+        FAIL(100);
 
         private int code;
 
