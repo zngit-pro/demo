@@ -1,4 +1,4 @@
-package org.foryou.admin.service;
+package org.foryou.admin.conf;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
@@ -28,9 +28,7 @@ public class RedissonConfig {
     @Bean(destroyMethod = "shutdown")
     RedissonClient redisson() throws IOException {
         Config config = new Config();
-        config.useMasterSlaveServers()
-                .setMasterAddress(this.getMaster())
-                .addSlaveAddress(this.getSlave())
+        config.useSingleServer().setAddress(master)
                 .setPassword(this.getPassword());
         return Redisson.create(config);
     }
